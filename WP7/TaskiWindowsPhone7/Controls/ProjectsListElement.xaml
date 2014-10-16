@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="TaskiWindowsPhone7.Controls.ProjectsListElement"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="100" d:DesignWidth="480" Margin="-3,0,3,0">
+
+    <Grid x:Name="LayoutRoot" Margin="4"  >
+        <toolkit:ContextMenuService.ContextMenu>
+            
+        <toolkit:ContextMenu IsZoomEnabled="True">
+                <toolkit:MenuItem Header="{Binding Path=AppResources.Pin, Source={StaticResource LocalizedStrings}}" Click="ContextMenuItemClick"/>
+                <toolkit:MenuItem Header="{Binding Path=AppResources.ProjectListElementEdit, Source={StaticResource LocalizedStrings}}" Click="ContextMenuItemClick"/>
+                <toolkit:MenuItem Header="{Binding Path=AppResources.ProjectListElementDelete, Source={StaticResource LocalizedStrings}}" Click="ContextMenuItemClick"/>
+        </toolkit:ContextMenu>
+        </toolkit:ContextMenuService.ContextMenu>
+
+        <StackPanel Orientation="Horizontal" Tap="ItemTap" >
+            <Image Source="{Binding Path=Image}" Name="img" Height="100" Width="100"/>
+            <Grid Margin="10,0,0,0" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Text="{Binding Path=Title}" 
+                           Style="{StaticResource PhoneTextTitle2Style}" />
+                <TextBlock Grid.Row="1" Text="{Binding Path=Dates}"
+                           Style="{StaticResource PhoneTextSmallStyle}"/>
+                <TextBlock Grid.Row="2" Text="{Binding Path=Counters}"
+                           Style="{StaticResource PhoneTextSmallStyle}"/>
+
+            </Grid>
+        </StackPanel>
+    </Grid>
+</UserControl>

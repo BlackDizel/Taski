@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="TaskiWindowsPhone7.Controls.TaskListElement"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="60" d:DesignWidth="480">
+    
+    <Grid  x:Name="LayoutRoot" Tap="ItemTap">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        
+        <toolkit:ContextMenuService.ContextMenu>
+
+            <toolkit:ContextMenu IsZoomEnabled="True">
+                <toolkit:MenuItem Header="{Binding Path=AppResources.Pin, Source={StaticResource LocalizedStrings}}" Click="ContextMenuItemClick"/>
+                <toolkit:MenuItem Header="{Binding Path=AppResources.ProjectListElementEdit, Source={StaticResource LocalizedStrings}}" Click="ContextMenuItemClick"/>
+                <toolkit:MenuItem Header="{Binding Path=AppResources.ProjectListElementDelete, Source={StaticResource LocalizedStrings}}" Click="ContextMenuItemClick"/>
+            </toolkit:ContextMenu>
+        </toolkit:ContextMenuService.ContextMenu>
+
+        <TextBlock Text="{Binding State}" HorizontalAlignment="Right"
+                   Style="{StaticResource PhoneTextTitle2Style}"
+                   Visibility="Collapsed"
+                   />
+
+        <TextBlock  
+                   Text="{Binding Title}" 
+                   Style="{StaticResource PhoneTextTitle2Style}"
+                   Grid.Row="0"
+                    />
+        <StackPanel Orientation="Horizontal"  Grid.Row="1">
+            <TextBlock 
+                Style="{StaticResource PhoneTextSmallStyle}"
+                Text="{Binding Path=AppResources.ProjectsListElementDateFrom, Source={StaticResource LocalizedStrings}}"
+                />
+            <TextBlock  Text="{Binding StartDate}" 
+                        Style="{StaticResource PhoneTextSmallStyle}"
+                       />
+            <TextBlock  Style="{StaticResource PhoneTextSmallStyle}"
+                Text="{Binding Path=AppResources.ProjectsListElementDateTo, Source={StaticResource LocalizedStrings}}"
+                
+                        />
+            <TextBlock Text="{Binding FinishDate}"
+                        Style="{StaticResource PhoneTextSmallStyle}"
+                       />
+        </StackPanel>
+
+
+    </Grid>
+</UserControl>
